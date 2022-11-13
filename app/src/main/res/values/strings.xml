@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">capstone_dankook_map</string>
+    <string name="title_activity_maps">DK MAP</string>
+    <string name="title_activity_inside">3층</string>
+    <string name="title_activity_building">교육관</string>
+    <string name="search_road">길찾기</string>
+    <string name="dku_buildings">건물 목록</string>
+    <string name="door_front">정문</string>
+    <string name="HQ">범정관</string>
+    <string name="Library">퇴계기념중앙도서관</string>
+    <string name="student_HQ">혜당관(학생회관)</string>
+    <string name="software">소프트웨어 ICT관</string>
+    <string name="media">미디어센터</string>
+    <string name="teacher">사범관</string>
+    <string name="business">상경관</string>
+    <string name="humanities">인문관</string>
+    <string name="todo">TODO</string>
+    <string name="b2f">1층</string>
+    <string name="b1f">2층</string>
+    <string name="u1f">3층</string>
+    <string name="u2f">4층</string>
+    <string name="u3f">5층</string>
+    <string name="u4f">6층</string>
+    <string name="b3f">지하 1층</string>
+</resources>

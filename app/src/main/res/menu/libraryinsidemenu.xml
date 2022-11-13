@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/b2f"
+        android:title="@string/b2f" />
+    <item android:id="@+id/b1f"
+        android:title="@string/b1f" />
+    <item android:id="@+id/u1f"
+        android:title="@string/u1f" />
+    <item android:id="@+id/u2f"
+        android:title="@string/u2f" />
+    <item android:id="@+id/u3f"
+        android:title="@string/u3f" />
+    <item android:id="@+id/u4f"
+        android:title="@string/u4f" />
+</menu>

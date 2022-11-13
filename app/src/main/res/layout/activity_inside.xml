@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Crawl1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InsideActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="402dp"
+        android:layout_height="308dp"
+        android:layout_marginTop="132dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/lib_fl_3" />
+
+    <Button
+        android:id="@+id/crawl3"
+        android:layout_width="60dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="104dp"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/crawl4"
+        android:layout_width="33dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="132dp"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/crawl5"
+        android:layout_width="28dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="304dp"
+        android:layout_marginEnd="172dp"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="307dp"
+        android:layout_marginTop="98dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="17dp"
+        android:text="길찾기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="325dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/crawl1"
+        android:layout_width="61dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="240dp"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/crawl2"
+        android:layout_width="59dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="172dp"
+        android:text="Button"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
