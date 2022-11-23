@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">capstone_dankook_map</string>
+    <string name="app_name">DK MAP</string>
     <string name="title_activity_maps">DK MAP</string>
     <string name="title_activity_inside">3층</string>
     <string name="title_activity_building">교육관</string>
-    <string name="search_road">길찾기</string>
+    <string name="title_activity_select">강의실</string>
+    <string name="search">검색</string>
     <string name="dku_buildings">건물 목록</string>
     <string name="door_front">정문</string>
     <string name="HQ">범정관</string>
@@ -22,4 +23,10 @@
     <string name="u3f">5층</string>
     <string name="u4f">6층</string>
     <string name="b3f">지하 1층</string>
+    <string name="rounge">도산라운지</string>
+    <string name="map_marker">맵 표시</string>
+    <string name="univ_consulting_center">대학생활상담센터</string>
+    <string name="info_room">정보검색실</string>
+    <string name="checkout">대출실</string>
+    <string name="ctl">CTL</string>
 </resources>

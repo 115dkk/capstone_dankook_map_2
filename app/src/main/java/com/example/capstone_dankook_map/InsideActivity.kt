@@ -32,11 +32,39 @@ class InsideActivity : AppCompatActivity() {
         val crawl4 = findViewById<Button>(R.id.crawl4)
         val crawl5 = findViewById<Button>(R.id.crawl5)
 
+        val imageview = findViewById<ImageView>(R.id.imageView3)
+
         btn.setOnClickListener{
-            val ans = astar(3,3)
-            val intStr: String = ans.replace("[^0-9]", "")
-            text.text = ans
+            intent = Intent(applicationContext, SelectActivity::class.java)
+            startActivity(intent)
         }
+
+        val target = intent.getStringExtra("target")
+        val ans = intent.getStringExtra("ans")
+
+        when (target) {
+            "rounge" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_a)
+                text.text = ans
+            }
+            "info" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_b)
+                text.text = ans
+            }
+            "check" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_c)
+                text.text = ans
+            }
+            "CTL" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_d)
+                text.text = ans
+            }
+            "center" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_e)
+                text.text = ans
+            }
+        }
+
         val dkuDB =
             Room.databaseBuilder(applicationContext, DKUMapLibDB::class.java, "DK_MAP_LIB_FLOOR")
                 .createFromAsset("databases/DKU_Lib_Kor.db").build()

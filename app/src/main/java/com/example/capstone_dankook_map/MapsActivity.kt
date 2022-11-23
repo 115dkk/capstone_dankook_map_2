@@ -42,26 +42,30 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val lat = intent.getDoubleExtra("lat", 37.3226546)
         val lon = intent.getDoubleExtra("lon", 127.1260339)
         var title = "단국대학교"
-        var snippet = "한국 최고의 명문대학교"
         val change = intent.getBooleanExtra("change", false)
-        val isinside = intent.getBooleanExtra("isinside", false)
+        val inside = intent.getBooleanExtra("inside", false)
 
         if(change) {
             title = intent.getStringExtra("title").toString()
-            snippet = intent.getStringExtra("snippet").toString()
         }
 
         val dku = LatLng(lat, lon)
         val markerOptions = MarkerOptions() // 마커 생성
         markerOptions.position(dku)
         markerOptions.title(title) // 마커 제목
-        markerOptions.snippet(snippet) // 마커 설명
         mMap.addMarker(markerOptions)
+
+//        val lib = LatLng(37.323476641, 127.12550096)
+//        val markerOptions2 = MarkerOptions()
+//        markerOptions2.position(lib)
+//        markerOptions2.title("도서관")
+//        mMap.addMarker(markerOptions2)
+
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(dku)) // 초기 위치
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15f)) // 줌의 정도
 
-        if(isinside) {
+        if(inside) {
             Handler().postDelayed({
                 mMap.setOnMarkerClickListener {
                     when (intent.getStringExtra("intent").toString()) {
@@ -110,7 +114,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val buildingIntent = Intent(applicationContext, BuildingsActivity::class.java)
         when (item?.itemId) {
             R.id.dku_buildings -> startActivity(buildingIntent)
-            R.id.search_road -> startActivity(intent)
+            R.id.search -> startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }
