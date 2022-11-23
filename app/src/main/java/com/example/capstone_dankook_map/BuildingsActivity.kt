@@ -14,7 +14,7 @@ class BuildingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_building)
         intent = Intent(applicationContext, MapsActivity::class.java)
 
-        val search = findViewById<SearchView>(R.id.serachview)
+        val search = findViewById<SearchView>(R.id.searchview)
         val listView = findViewById<ListView>(R.id.listView)
 
         val names = arrayOf("퇴계기념중앙도서관", "소프트웨어 ICT관", "미디어센터", "정문", "범정관", "혜당관(학생회관)",

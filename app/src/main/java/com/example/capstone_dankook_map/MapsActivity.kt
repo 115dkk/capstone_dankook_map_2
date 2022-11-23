@@ -110,11 +110,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val intent = Intent(applicationContext, SplashActivity::class.java)
         val buildingIntent = Intent(applicationContext, BuildingsActivity::class.java)
         when (item?.itemId) {
             R.id.dku_buildings -> startActivity(buildingIntent)
-            R.id.search -> startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }
