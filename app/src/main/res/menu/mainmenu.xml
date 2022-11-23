@@ -5,8 +5,4 @@
         android:id="@+id/dku_buildings"
         android:title="@string/dku_buildings" />
 
-    <item
-        android:id="@+id/search"
-        android:title="@string/search" >
-    </item>
 </menu>
