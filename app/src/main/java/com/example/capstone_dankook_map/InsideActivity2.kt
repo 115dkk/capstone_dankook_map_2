@@ -10,6 +10,8 @@ class InsideActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inside)
+        val imageview = findViewById<ImageView>(R.id.imageView3)
+        imageview.setImageResource(R.mipmap.ict_1f)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

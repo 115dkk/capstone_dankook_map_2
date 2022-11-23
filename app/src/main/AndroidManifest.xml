@@ -55,6 +55,11 @@
             android:label="@string/title_activity_building"
             android:parentActivityName=".MapsActivity" />
         <activity
+            android:name=".SelectActivity"
+            android:exported="true"
+            android:label="@string/title_activity_select"
+            android:parentActivityName=".InsideActivity" />
+        <activity
             android:name=".MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps">
