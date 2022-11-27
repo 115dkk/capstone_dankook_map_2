@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DK MAP</string>
     <string name="title_activity_maps">DK MAP</string>
-    <string name="title_activity_inside">3층</string>
+    <string name="title_activity_inside">도서관</string>
     <string name="title_activity_building">교육관</string>
     <string name="title_activity_select">강의실</string>
     <string name="search">검색</string>

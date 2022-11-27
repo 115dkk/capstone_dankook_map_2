@@ -18,12 +18,6 @@
             android:label="@string/title_activity_inside"
             android:theme="@style/Theme.Capstone_dankook_map"
             android:parentActivityName=".BuildingsActivity"/>
-        <activity
-            android:name=".InsideActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_inside"
-            android:theme="@style/Theme.Capstone_dankook_map"
-            android:parentActivityName=".BuildingsActivity"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

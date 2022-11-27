@@ -71,8 +71,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     when (intent.getStringExtra("intent").toString()) {
                         "InsideActivity" ->
                             intent = Intent(applicationContext, InsideActivity::class.java)
-                        "InsideActivity2" ->
-                            intent = Intent(applicationContext, InsideActivity2::class.java)
                     }
                     //var intent = Intent(applicationContext, BuildingsActivity::class.java)
 

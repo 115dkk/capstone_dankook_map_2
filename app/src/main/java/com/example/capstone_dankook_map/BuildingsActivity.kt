@@ -1,13 +1,18 @@
 package com.example.capstone_dankook_map
 
+import android.annotation.SuppressLint
+import android.app.ProgressDialog.show
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 
 
 class BuildingsActivity : AppCompatActivity() {
 
+    @SuppressLint("ShowToast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -69,17 +74,11 @@ class BuildingsActivity : AppCompatActivity() {
 
                 startActivity(intent)
             }
-            if(clickedlist == "미디어센터"){
-                //intent = Intent(applicationContext, SelectActivity::class.java)
-                //intent.putExtra("loc","ict")
-                intent.putExtra("lat", 37.321168128)
-                intent.putExtra("lon", 127.1274602)
-                intent.putExtra("title", "ICT 미디어센터")
-                intent.putExtra("change", true)
-                intent.putExtra("inside", true)
-                intent.putExtra("intent", "InsideActivity2")
-
-                startActivity(intent)
+            if(clickedlist == "소프트웨어 ICT관"||clickedlist == "미디어센터"||clickedlist == "범정관"||clickedlist == "혜당관(학생회관)"||clickedlist == "인문관"||clickedlist == "사범관"||clickedlist == "상경관"){
+                //val toast = Toast.makeText(this, "서비스 준비중입니다.", Toast.LENGTH_SHORT)
+                //toast.show()
+                val layout = findViewById<View>(R.id.BuildLayout)
+                Snackbar.make(layout, "서비스 준비중입니다.", 250).show()
             }
         }
     }

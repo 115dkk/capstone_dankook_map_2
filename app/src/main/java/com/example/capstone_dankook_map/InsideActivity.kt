@@ -18,8 +18,10 @@ import com.example.capstone_dankook_map.astar.Node
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 class InsideActivity : AppCompatActivity() {
+    private var can by Delegates.notNull<Boolean>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inside)
@@ -34,34 +36,40 @@ class InsideActivity : AppCompatActivity() {
 
         val imageview = findViewById<ImageView>(R.id.imageView3)
 
-        btn.setOnClickListener{
-            intent = Intent(applicationContext, SelectActivity::class.java)
-            startActivity(intent)
+        can = false
+
+        if (can) {
+            btn.setOnClickListener {
+                intent = Intent(applicationContext, SelectActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         val target = intent.getStringExtra("target")
         val ans = intent.getStringExtra("ans")
 
-        when (target) {
-            "rounge" -> {
-                imageview.setImageResource(R.mipmap.lib_fl_3_a)
-                text.text = ans
-            }
-            "info" -> {
-                imageview.setImageResource(R.mipmap.lib_fl_3_b)
-                text.text = ans
-            }
-            "check" -> {
-                imageview.setImageResource(R.mipmap.lib_fl_3_c)
-                text.text = ans
-            }
-            "CTL" -> {
-                imageview.setImageResource(R.mipmap.lib_fl_3_d)
-                text.text = ans
-            }
-            "center" -> {
-                imageview.setImageResource(R.mipmap.lib_fl_3_e)
-                text.text = ans
+        if (can) {
+            when (target) {
+                "rounge" -> {
+                    imageview.setImageResource(R.mipmap.lib_fl_3_a)
+                    text.text = ans
+                }
+                "info" -> {
+                    imageview.setImageResource(R.mipmap.lib_fl_3_b)
+                    text.text = ans
+                }
+                "check" -> {
+                    imageview.setImageResource(R.mipmap.lib_fl_3_c)
+                    text.text = ans
+                }
+                "CTL" -> {
+                    imageview.setImageResource(R.mipmap.lib_fl_3_d)
+                    text.text = ans
+                }
+                "center" -> {
+                    imageview.setImageResource(R.mipmap.lib_fl_3_e)
+                    text.text = ans
+                }
             }
         }
 
@@ -76,54 +84,68 @@ class InsideActivity : AppCompatActivity() {
             dkuDB.dklibDAO().getAll()
         }
 
-        crawl1.visibility = View.VISIBLE
-        crawl1.setBackgroundColor(Color.TRANSPARENT)
+        if(can) {
+            crawl1.visibility = View.VISIBLE
+            crawl1.setBackgroundColor(Color.TRANSPARENT)
 
-        crawl1.setOnClickListener {
-            var intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://lib.dankook.ac.kr/local/html/studyRoomGuide3"))
-            startActivity(intent)
+            crawl1.setOnClickListener {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://lib.dankook.ac.kr/local/html/studyRoomGuide3")
+                )
+                startActivity(intent)
+            }
+
+            crawl2.visibility = View.VISIBLE
+            crawl2.setBackgroundColor(Color.TRANSPARENT)
+
+            crawl2.setOnClickListener {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://lib.dankook.ac.kr/search/tot")
+                )
+                startActivity(intent)
+            }
+
+            crawl3.visibility = View.VISIBLE
+            crawl3.setBackgroundColor(Color.TRANSPARENT)
+
+            crawl3.setOnClickListener {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://cms.dankook.ac.kr/web/dkcounsel")
+                )
+                startActivity(intent)
+            }
+
+            crawl4.visibility = View.VISIBLE
+            crawl4.setBackgroundColor(Color.TRANSPARENT)
+
+            crawl4.setOnClickListener {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://lib.dankook.ac.kr/local/html/loanGuide")
+                )
+                startActivity(intent)
+            }
+
+            crawl5.visibility = View.VISIBLE
+            crawl5.setBackgroundColor(Color.TRANSPARENT)
+
+            crawl5.setOnClickListener {
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://lib.dankook.ac.kr/local/html/IDCardGuide")
+                )
+                startActivity(intent)
+            }
         }
-
-        crawl2.visibility = View.VISIBLE
-        crawl2.setBackgroundColor(Color.TRANSPARENT)
-
-        crawl2.setOnClickListener {
-            var intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://lib.dankook.ac.kr/search/tot"))
-            startActivity(intent)
-        }
-
-        crawl3.visibility = View.VISIBLE
-        crawl3.setBackgroundColor(Color.TRANSPARENT)
-
-        crawl3.setOnClickListener {
-            var intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://cms.dankook.ac.kr/web/dkcounsel"))
-            startActivity(intent)
-        }
-
-        crawl4.visibility = View.VISIBLE
-        crawl4.setBackgroundColor(Color.TRANSPARENT)
-
-        crawl4.setOnClickListener {
-            var intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://lib.dankook.ac.kr/local/html/loanGuide"))
-            startActivity(intent)
-        }
-
-        crawl5.visibility = View.VISIBLE
-        crawl5.setBackgroundColor(Color.TRANSPARENT)
-
-        crawl5.setOnClickListener {
-            var intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://lib.dankook.ac.kr/local/html/IDCardGuide"))
-            startActivity(intent)
+        else{
+            crawl1.visibility = View.INVISIBLE
+            crawl2.visibility = View.INVISIBLE
+            crawl3.visibility = View.INVISIBLE
+            crawl4.visibility = View.INVISIBLE
+            crawl5.visibility = View.INVISIBLE
         }
     }
 
@@ -136,19 +158,42 @@ class InsideActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val imageview = findViewById<ImageView>(R.id.imageView3)
+        val text = findViewById<TextView>(R.id.textView)
 
-        when (item?.itemId) {
-            R.id.b2f -> imageview.setImageResource(R.mipmap.lib_fl_1)
-            R.id.b1f -> imageview.setImageResource(R.mipmap.lib_fl_2)
-            R.id.u1f -> imageview.setImageResource(R.mipmap.lib_fl_3)
-            R.id.u2f -> imageview.setImageResource(R.mipmap.lib_fl_4)
-            R.id.u3f -> imageview.setImageResource(R.mipmap.lib_fl_5)
-            R.id.u4f -> imageview.setImageResource(R.mipmap.lib_fl_6)
+        when (item.itemId) {
+            R.id.b2f -> {
+                imageview.setImageResource(R.mipmap.lib_fl_1)
+                text.text = ""
+                can = false
+            }
+            R.id.b1f -> {
+                imageview.setImageResource(R.mipmap.lib_fl_2)
+                text.text = ""
+                can = false
+            }
+            R.id.u1f -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3)
+                text.text = ""
+                can = true
+            }
+            R.id.u2f -> {
+                imageview.setImageResource(R.mipmap.lib_fl_4)
+                text.text = ""
+                can = false
+            }
+            R.id.u3f -> {
+                imageview.setImageResource(R.mipmap.lib_fl_5)
+                text.text = ""
+                can = false
+            }
+            R.id.u4f -> {
+                imageview.setImageResource(R.mipmap.lib_fl_6)
+                text.text = ""
+                can = false
+            }
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 
     private fun astar(a:Int, b:Int): String {
         val initialNode = Node(10, 11)
