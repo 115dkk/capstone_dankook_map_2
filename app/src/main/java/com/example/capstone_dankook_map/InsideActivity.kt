@@ -5,9 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -21,7 +19,12 @@ import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 class InsideActivity : AppCompatActivity() {
-    private var can by Delegates.notNull<Boolean>()
+
+    private var mScaleGestureDetector: ScaleGestureDetector? = null
+    private var scaleFactor = 1.0f
+    private lateinit var mImageView: ImageView
+
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inside)
@@ -36,40 +39,40 @@ class InsideActivity : AppCompatActivity() {
 
         val imageview = findViewById<ImageView>(R.id.imageView3)
 
-        can = false
+        mImageView= findViewById(R.id.imageView3)
 
-        if (can) {
-            btn.setOnClickListener {
-                intent = Intent(applicationContext, SelectActivity::class.java)
-                startActivity(intent)
-            }
+
+        mScaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
+
+
+        btn.setOnClickListener {
+            intent = Intent(applicationContext, SelectActivity::class.java)
+            startActivity(intent)
         }
 
         val target = intent.getStringExtra("target")
         val ans = intent.getStringExtra("ans")
 
-        if (can) {
-            when (target) {
-                "rounge" -> {
-                    imageview.setImageResource(R.mipmap.lib_fl_3_a)
-                    text.text = ans
-                }
-                "info" -> {
-                    imageview.setImageResource(R.mipmap.lib_fl_3_b)
-                    text.text = ans
-                }
-                "check" -> {
-                    imageview.setImageResource(R.mipmap.lib_fl_3_c)
-                    text.text = ans
-                }
-                "CTL" -> {
-                    imageview.setImageResource(R.mipmap.lib_fl_3_d)
-                    text.text = ans
-                }
-                "center" -> {
-                    imageview.setImageResource(R.mipmap.lib_fl_3_e)
-                    text.text = ans
-                }
+        when (target) {
+            "rounge" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_a)
+                text.text = ans
+            }
+            "info" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_b)
+                text.text = ans
+            }
+            "check" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_c)
+                text.text = ans
+            }
+            "CTL" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_d)
+                text.text = ans
+            }
+            "center" -> {
+                imageview.setImageResource(R.mipmap.lib_fl_3_e)
+                text.text = ans
             }
         }
 
@@ -83,8 +86,6 @@ class InsideActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             dkuDB.dklibDAO().getAll()
         }
-
-        if(can) {
             crawl1.visibility = View.VISIBLE
             crawl1.setBackgroundColor(Color.TRANSPARENT)
 
@@ -140,12 +141,27 @@ class InsideActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        else{
-            crawl1.visibility = View.INVISIBLE
-            crawl2.visibility = View.INVISIBLE
-            crawl3.visibility = View.INVISIBLE
-            crawl4.visibility = View.INVISIBLE
-            crawl5.visibility = View.INVISIBLE
+
+    override fun onTouchEvent(motionEvent: MotionEvent?): Boolean {
+
+        // 제스처 이벤트를 처리하는 메소드를 호출
+        mScaleGestureDetector!!.onTouchEvent(motionEvent)
+        return true
+    }
+
+    // 제스처 이벤트를 처리하는 클래스
+    inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        override fun onScale(scaleGestureDetector: ScaleGestureDetector): Boolean {
+
+            scaleFactor *= scaleGestureDetector.scaleFactor
+
+            // 최소 0.5, 최대 2배
+            scaleFactor = Math.max(0.5f, Math.min(scaleFactor, 2.0f))
+
+            // 이미지에 적용
+            mImageView.scaleX = scaleFactor
+            mImageView.scaleY = scaleFactor
+            return true
         }
     }
 
@@ -164,32 +180,26 @@ class InsideActivity : AppCompatActivity() {
             R.id.b2f -> {
                 imageview.setImageResource(R.mipmap.lib_fl_1)
                 text.text = ""
-                can = false
             }
             R.id.b1f -> {
                 imageview.setImageResource(R.mipmap.lib_fl_2)
                 text.text = ""
-                can = false
             }
             R.id.u1f -> {
                 imageview.setImageResource(R.mipmap.lib_fl_3)
                 text.text = ""
-                can = true
             }
             R.id.u2f -> {
                 imageview.setImageResource(R.mipmap.lib_fl_4)
                 text.text = ""
-                can = false
             }
             R.id.u3f -> {
                 imageview.setImageResource(R.mipmap.lib_fl_5)
                 text.text = ""
-                can = false
             }
             R.id.u4f -> {
                 imageview.setImageResource(R.mipmap.lib_fl_6)
                 text.text = ""
-                can = false
             }
         }
         return super.onOptionsItemSelected(item)
